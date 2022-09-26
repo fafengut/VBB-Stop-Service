@@ -1,13 +1,10 @@
-<template>
-  <nav>
-    <router-link :to="{name: 'home'}">Home</router-link> |
-    <router-link :to="{name: 'about'}">About</router-link>
-  </nav>
-  <router-view />
-</template>
-
-<script>
+<script setup>
+import NavMain from './components/NavMain.vue'
 </script>
 
-<style>
-</style>
+<template>
+  <nav-main />
+  <main>
+    <router-view />
+  </main>
+</template>
