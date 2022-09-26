@@ -1,5 +1,5 @@
 <template>
-  <h1>About</h1>
+  <h1 class="text-4xl">About</h1>
   <p>
     Lorem ipsum dolor sit amet consectetur adipisicing elit. In odio veniam rem
     velit eum dolore, eligendi necessitatibus fuga deleniti obcaecati delectus
@@ -14,9 +14,3 @@
     assumenda dolore.
   </p>
 </template>
-
-<script>
-export default {};
-</script>
-
-<style></style>
