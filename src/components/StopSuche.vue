@@ -22,6 +22,50 @@
   <div v-else class="mt-10">
     <div v-for="stop in state.stops" :key="stop.id" class="text-left py-1">
       {{ stop.name }}
+      <div class="flex space-x-2 mb-3 mt-1">
+        <img
+          src="@/assets/icons/S-Bahn-Logo.svg"
+          alt="S-Bahn-Logo"
+          v-if="stop.products.suburban"
+          class="w-6"
+        />
+        <img
+          src="@/assets/icons/U-Bahnlogo_Berlin.png"
+          alt="U-Bahn-Logo"
+          v-if="stop.products.subway"
+          class="w-6"
+        />
+        <img
+          src="@/assets/icons/Tram-Logo.svg"
+          alt="Tram-Logo"
+          v-if="stop.products.tram"
+          class="w-6"
+        />
+        <img
+          src="@/assets/icons/BUS-Logo-BVG.svg"
+          alt="Bus-Logo"
+          v-if="stop.products.bus"
+          class="w-6"
+        />
+        <img
+          src="@/assets/icons/Faehre-Signet_VBB.svg"
+          alt="Faehre-Logo"
+          v-if="stop.products.ferry"
+          class="w-6"
+        />
+        <img
+          src="@/assets/icons/Signet_Fernverkehr_VBB.svg"
+          alt="Fernverkehr-Logo"
+          v-if="stop.products.express"
+          class="w-6"
+        />
+        <img
+          src="@/assets/icons/VBB_Bahn-Regionalverkehr.svg"
+          alt="Regionalverkehr-Logo"
+          v-if="stop.products.regional"
+          class="w-6"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -42,7 +86,8 @@ const search = async () => {
     state.value.loading = true
     const response = await stopsApi.findByQuery({
       query: state.value.searchQuery,
-      limit: 20,
+      poi: false,
+      addresses: false,
     })
     state.value.stops = response.data
   } catch (error) {
