@@ -7,11 +7,16 @@ const routes = [
     component: () => import('@/views/HomeView.vue'),
     children: [
       {
-        path: ':id',
-        name: 'stop details',
-        component: () => import('@/views/StopView/StopDetails.vue'),
+        path: '',
+        name: 'stop search',
+        component: () => import('@/views/StopView/StopSuche.vue'),
       },
     ],
+  },
+  {
+    path: '/stops/:id',
+    name: 'stop details',
+    component: () => import('@/views/StopView/StopDetails.vue'),
   },
   {
     path: '/favorites',
@@ -22,6 +27,11 @@ const routes = [
     path: '/about',
     name: 'about',
     component: () => import('@/views/AboutView.vue'),
+  },
+  {
+    path: '/:catchAll(.*)*',
+    name: 'PageNotFound',
+    component: () => import('@/views/PageNotFound.vue'),
   },
 ]
 
