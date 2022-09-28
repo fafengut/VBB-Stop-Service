@@ -67,14 +67,14 @@ const getFavoriteById = storeFavorite.getFavoriteById
       <img
         src="@/assets/icons/favorite_white.svg"
         alt="Favorite-Icon"
-        class="absolute right-10"
+        class="absolute right-10 cursor-pointer"
         v-if="getFavoriteById(state.details.id)"
         @click="storeFavorite.remove(state.details.id)"
       />
       <img
         src="@/assets/icons/favorite_border.svg"
         alt="Kein-Favorite-Icon"
-        class="absolute right-10"
+        class="absolute right-10 cursor-pointer"
         v-else
         @click="storeFavorite.add(state.details.id)"
       />
