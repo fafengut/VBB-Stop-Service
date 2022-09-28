@@ -56,6 +56,7 @@ const getFavoriteById = storeFavorite.getFavoriteById
   <div v-if="state.loading" class="flex justify-center items-center mt-10">
     <div
       class="animate-spin rounded-full h-64 w-64 border-b-8 border-white-900"
+      data-testid="loading-indicator"
     ></div>
   </div>
   <div v-else-if="state.error" class="mt-10">
@@ -66,10 +67,11 @@ const getFavoriteById = storeFavorite.getFavoriteById
     <div
       v-for="stop in state.stops"
       :key="stop.id"
+      data-test="stop"
       class="text-left py-1 cursor-pointer hover:text-green-400 relative"
     >
       <div class="flex">
-        <div @click="goToDetails(stop.id)">
+        <div @click="goToDetails(stop.id)" :data-test="`stop-${stop.id}`">
           {{ stop.name }}
         </div>
         <img
