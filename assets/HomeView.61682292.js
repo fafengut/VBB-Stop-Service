@@ -1,0 +1,1 @@
+import c from"./StopSuche.83e04626.js";import{o as e,c as o,a as r,F as _,b as n,d as m}from"./index.81b87fab.js";import"./favorite.ff9442b4.js";const l=n("h1",{class:"text-6xl"},"Haltestelle suchen",-1),p={__name:"StopView",setup(t){return(a,s)=>(e(),o(_,null,[l,r(c)],64))}},d={__name:"HomeView",setup(t){return(a,s)=>(e(),m(p))}};export{d as default};
