@@ -63,7 +63,7 @@ const getFavoriteById = storeFavorite.getFavoriteById
   </div>
   <div v-else-if="state.details">
     <div class="flex justify-center items-center relative">
-      <h1 class="text-6xl">{{ state.details.name }}</h1>
+      <h1 class="text-6xl px-80">{{ state.details.name }}</h1>
       <img
         src="@/assets/icons/favorite_white.svg"
         alt="Favorite-Icon"
