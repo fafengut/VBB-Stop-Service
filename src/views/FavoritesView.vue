@@ -1,5 +1,5 @@
 <template>
-  <h1 class="text-4xl">Favoriten</h1>
+  <h1 class="text-6xl">Favoriten</h1>
   <FavoriteStops />
 </template>
 
