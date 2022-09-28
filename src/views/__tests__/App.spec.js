@@ -4,6 +4,7 @@ import NavMain from '@/components/NavMain.vue'
 import { routes } from '@/router/index.js'
 import HomeView from '@/views/HomeView.vue'
 import { createRouter, createWebHashHistory } from 'vue-router'
+import { createTestingPinia } from '@pinia/testing'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -14,7 +15,7 @@ describe('App', () => {
   it('renders a NavMain Component', () => {
     const wrapper = mount(App, {
       global: {
-        plugins: [router],
+        plugins: [router, createTestingPinia],
       },
     })
     expect(wrapper.findComponent(NavMain).exists()).toBe(true)
@@ -25,7 +26,7 @@ describe('App', () => {
     await router.isReady()
     const wrapper = mount(App, {
       global: {
-        plugins: [router],
+        plugins: [router, createTestingPinia],
       },
     })
     expect(wrapper.findComponent(HomeView).exists()).toBe(true)
@@ -36,7 +37,7 @@ describe('App', () => {
     await router.isReady()
     const wrapper = mount(App, {
       global: {
-        plugins: [router],
+        plugins: [router, createTestingPinia],
       },
     })
     expect(wrapper.html()).toContain('About')

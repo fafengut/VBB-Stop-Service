@@ -1,11 +1,16 @@
-import StopSuche from '@/components/StopSuche.vue'
+import StopSuche from '@/views/StopView/StopSuche.vue'
 import { mount } from '@vue/test-utils'
 import StopView from '@/views/StopView/StopView.vue'
+import { createTestingPinia } from '@pinia/testing'
 
 describe('StopView', () => {
   let wrapper
   beforeEach(() => {
-    wrapper = mount(StopView)
+    wrapper = mount(StopView, {
+      global: {
+        plugins: [createTestingPinia],
+      },
+    })
   })
 
   it('does render a StopSuche Component', () => {
