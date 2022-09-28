@@ -3,12 +3,14 @@ import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { stopsDetailsApi } from '@/api'
 import moment from 'moment'
+import { useFavoriteStore } from '@/stores/favorite'
 
 const state = ref({
   details: null,
   departures: null,
   loading: false,
   error: null,
+  isFavorite: null,
 })
 
 const route = useRoute()
@@ -44,6 +46,9 @@ const containsStop = (stopId) => {
     if (state.value.departures[i].stop.id == stopId) return true
   }
 }
+
+const storeFavorite = useFavoriteStore()
+const getFavoriteById = storeFavorite.getFavoriteById
 </script>
 
 <template>
@@ -57,7 +62,19 @@ const containsStop = (stopId) => {
     <span class="block">Reason: {{ state.error.response.data.msg }}</span>
   </div>
   <div v-else-if="state.details">
-    <h1 class="text-6xl">{{ state.details.name }}</h1>
+    <div class="flex justify-center items-center relative">
+      <h1 class="text-6xl">{{ state.details.name }}</h1>
+      <div
+        v-if="getFavoriteById(state.details.id)"
+        @click="storeFavorite.remove(state.details.id)"
+      >
+        Favorite
+      </div>
+      <div v-else @click="storeFavorite.add(state.details.id)">
+        Kein Favorite
+      </div>
+      <!-- @click="storeFavorite.add(state.details.id)" -->
+    </div>
     <div
       v-for="stop in state.details.stops"
       :key="stop.id"
