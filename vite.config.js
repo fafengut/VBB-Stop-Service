@@ -5,6 +5,7 @@ import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/vbb-stop-service',
   plugins: [vue(), eslintPlugin()],
   resolve: {
     alias: {

@@ -1,0 +1,1 @@
+import{_ as e}from"./_plugin-vue_export-helper.cdc0426e.js";import{o as t,c as s,b as o}from"./index.fcfb519e.js";const n={},c=o("h1",{class:"text-6xl"},"404 - Page Not Found",-1),a=o("p",null,"This page no longer exists or was moved to another location.",-1),r=[c,a];function _(l,d){return t(),s("div",null,r)}const h=e(n,[["render",_]]);export{h as default};
