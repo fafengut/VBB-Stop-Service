@@ -6,7 +6,6 @@ export const useFavoriteStore = defineStore({
     _favorites: [],
   }),
   getters: {
-    getAllFavorites: (state) => state._favorites,
     getFavoriteById: (state) => {
       return (stopId) =>
         state._favorites.find((favorite) => favorite === stopId)
@@ -17,7 +16,7 @@ export const useFavoriteStore = defineStore({
       this._favorites.push(id)
     },
     remove(id) {
-      this._favorites.splice(this._favorites.indexOf(id))
+      this._favorites.splice(this._favorites.indexOf(id), 1)
     },
   },
   persist: true,
