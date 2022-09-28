@@ -64,16 +64,20 @@ const getFavoriteById = storeFavorite.getFavoriteById
   <div v-else-if="state.details">
     <div class="flex justify-center items-center relative">
       <h1 class="text-6xl">{{ state.details.name }}</h1>
-      <div
+      <img
+        src="@/assets/icons/favorite_white.svg"
+        alt="Favorite-Icon"
+        class="absolute right-10"
         v-if="getFavoriteById(state.details.id)"
         @click="storeFavorite.remove(state.details.id)"
-      >
-        Favorite
-      </div>
-      <div v-else @click="storeFavorite.add(state.details.id)">
-        Kein Favorite
-      </div>
-      <!-- @click="storeFavorite.add(state.details.id)" -->
+      />
+      <img
+        src="@/assets/icons/favorite_border.svg"
+        alt="Kein-Favorite-Icon"
+        class="absolute right-10"
+        v-else
+        @click="storeFavorite.add(state.details.id)"
+      />
     </div>
     <div
       v-for="stop in state.details.stops"
