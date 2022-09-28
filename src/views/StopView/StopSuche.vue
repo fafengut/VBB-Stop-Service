@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { stopsApi } from '@/api'
 import { useRouter } from 'vue-router'
+import { useFavoriteStore } from '@/stores/favorite'
 
 const router = useRouter()
 
@@ -31,6 +32,9 @@ const search = async () => {
 const goToDetails = (id) => {
   router.push({ path: `/stops/${id}` })
 }
+
+const storeFavorite = useFavoriteStore()
+const getFavoriteById = storeFavorite.getFavoriteById
 </script>
 
 <template>
@@ -62,11 +66,28 @@ const goToDetails = (id) => {
     <div
       v-for="stop in state.stops"
       :key="stop.id"
-      class="text-left py-1 cursor-pointer hover:text-green-400"
-      @click="goToDetails(stop.id)"
+      class="text-left py-1 cursor-pointer hover:text-green-400 relative"
     >
-      {{ stop.name }}
-      <div class="flex space-x-2 mb-3 mt-1">
+      <div class="flex">
+        <div @click="goToDetails(stop.id)">
+          {{ stop.name }}
+        </div>
+        <img
+          src="@/assets/icons/favorite_white.svg"
+          alt="Favorite-Icon"
+          class="absolute right-0"
+          v-if="getFavoriteById(stop.id)"
+          @click="storeFavorite.remove(stop.id)"
+        />
+        <img
+          src="@/assets/icons/favorite_border.svg"
+          alt="Kein-Favorite-Icon"
+          class="absolute right-0"
+          v-else
+          @click="storeFavorite.add(stop.id)"
+        />
+      </div>
+      <div class="flex space-x-2 mb-3 mt-1" @click="goToDetails(stop.id)">
         <img
           src="@/assets/icons/S-Bahn-Logo.svg"
           alt="S-Bahn-Logo"
